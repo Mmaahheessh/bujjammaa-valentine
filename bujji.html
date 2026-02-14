@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Bujjammaa 💗</title>
+</head>
+
+<body style="margin:0; padding:0; overflow:hidden; font-family:'Segoe UI',sans-serif; background:linear-gradient(135deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5); display:flex; justify-content:center; align-items:center; height:100vh;">
+
+<div style="background:white; width:90%; max-width:350px; border-radius:20px; box-shadow:0 15px 40px rgba(0,0,0,0.3); text-align:center; padding:25px; position:relative; z-index:2;">
+
+<h2 style="margin:0; color:#d62976;">Bujjammaa 💗</h2>
+<p style="font-size:12px; color:gray; margin-top:3px;">My Favorite Person</p>
+
+<hr style="margin:15px 0; border:none; height:1px; background:#eee;">
+
+<p style="font-size:15px; color:#333; line-height:1.6;">
+Bujjammaa…  
+You are not just someone in my life.  
+You are my comfort, my happiness, my peace.  
+Every moment with you feels like a blessing.  
+If I had to choose again, I would still choose you — every single time. 💖
+</p>
+
+<h3 id="questionText" style="color:#d62976; margin-top:20px;">
+Will You Be My Valentine? 💌
+</h3>
+
+<div style="position:relative; height:120px; margin-top:15px;">
+
+<button id="yesBtn"
+style="padding:12px 30px; font-size:18px; border:none; border-radius:30px; background:#d62976; color:white; cursor:pointer; position:absolute; left:20%; transition:0.3s;">
+Yes 💖
+</button>
+
+<button id="noBtn"
+style="padding:12px 30px; font-size:18px; border:none; border-radius:30px; background:#555; color:white; cursor:pointer; position:absolute; left:55%; transition:0.3s;">
+No 💔
+</button>
+
+</div>
+
+<div id="finalMessage" style="margin-top:20px; font-size:18px; font-weight:bold; color:#d62976;"></div>
+
+</div>
+
+<script>
+
+// 💗 Floating Hearts
+function createHeart() {
+    let heart = document.createElement("div");
+    heart.innerHTML = "💗";
+    heart.style.position = "fixed";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = "100vh";
+    heart.style.fontSize = (Math.random() * 15 + 15) + "px";
+    heart.style.opacity = 0.8;
+    heart.style.animation = "floatUp 5s linear forwards";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}
+setInterval(createHeart, 400);
+
+let style = document.createElement("style");
+style.innerHTML = `
+@keyframes floatUp {
+    to {
+        transform: translateY(-120vh);
+        opacity: 0;
+    }
+}`;
+document.head.appendChild(style);
+
+
+// 💞 Unlimited Emotional Quotes
+const emotionalQuotes = [
+"Are you sure? 🥺 You mean the world to me.",
+"My life feels brighter because of you 💖",
+"I can’t imagine my days without your smile.",
+"You are my peace, my happiness, my everything.",
+"Please don’t say no… you are my heart 💗",
+"Being with you is my favorite place in the world.",
+"You are not just important… you are my whole world 🌍💞",
+"Without you, my days feel incomplete.",
+"You are the reason behind my happiest moments.",
+"I choose you. Always you. Forever you. 💍"
+];
+
+let quoteIndex = 0;
+let yesSize = 18;
+
+// 😭 When No is clicked
+document.getElementById("noBtn").addEventListener("click", function() {
+
+    // Grow Yes button
+    yesSize += 6;
+    let yesBtn = document.getElementById("yesBtn");
+    yesBtn.style.fontSize = yesSize + "px";
+    yesBtn.style.padding = (yesSize/2) + "px " + (yesSize*2) + "px";
+
+    // Move No button randomly
+    let noBtn = document.getElementById("noBtn");
+    noBtn.style.left = Math.random() * 60 + "%";
+    noBtn.style.top = Math.random() * 80 + "px";
+
+    // Change emotional text (LOOPS FOREVER)
+    const heading = document.getElementById("questionText");
+    heading.innerHTML = emotionalQuotes[quoteIndex];
+
+    quoteIndex++;
+    if (quoteIndex >= emotionalQuotes.length) {
+        quoteIndex = 0; // restart from beginning (unlimited)
+    }
+});
+
+
+// 💖 When Yes is clicked
+document.getElementById("yesBtn").addEventListener("click", function() {
+
+    document.getElementById("questionText").innerHTML = 
+    "You just made my heart the happiest it has ever been 💖";
+
+    document.getElementById("finalMessage").innerHTML =
+    "Bujjammaa, I promise to stand by you, support you, and love you in every phase of life. You are my today and all of my tomorrows. 💍✨";
+
+    document.getElementById("yesBtn").style.display="none";
+    document.getElementById("noBtn").style.display="none";
+});
+
+</script>
+
+</body>
+</html>
